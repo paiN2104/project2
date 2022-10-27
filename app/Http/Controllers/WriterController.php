@@ -15,7 +15,9 @@ class WriterController extends Controller
      */
     public function index()
     {
-        //
+        return view('writer',[
+            'writers'=>Writer::all()
+        ]);
     }
 
     /**
@@ -45,9 +47,13 @@ class WriterController extends Controller
      * @param  \App\Models\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function show(Writer $writer)
+    public function show($id)
     {
-        //
+        $writer = Writer::find($id);
+
+        return view('writerDetail',[
+            'writer' => $writer
+        ]);
     }
 
     /**

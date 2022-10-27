@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WriterController;
 use App\Models\Writer;
 use Illuminate\Support\Facades\Route;
 
@@ -26,16 +27,9 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/writer', function () {
-    return view('writer', [
-        "writers" => Writer::allData()]);
-});
+Route::get('/writer',[WriterController::class,'index']);
 
-Route::get('/writer/{id}', function ($id) {
-    return view('writerDetail', [
-        'writer' => Writer::detail($id)
-    ]);
-});
+Route::get('/writer/{id}',[WriterController::class,'show']);
 
 
 Route::get('/dashboard', function () {
