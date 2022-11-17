@@ -47,9 +47,13 @@ class WriterController extends Controller
      * @param  \App\Models\Writer  $writer
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Writer $writer)
     {
-        $writer = Writer::find($id);
+        //cara dengan route binding
+        $writer->load('books');
+
+        //bkn root binding
+        //Writer::find(1)->with('books')->get()
 
         return view('writerDetail',[
             'writer' => $writer

@@ -29,7 +29,7 @@ Route::get('/contact', function () {
 
 Route::get('/writer',[WriterController::class,'index']);
 
-Route::get('/writer/{id}',[WriterController::class,'show']);
+Route::get('/writer/{writer}',[WriterController::class,'show']);
 
 
 Route::get('/dashboard', function () {

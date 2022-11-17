@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Writer extends Model
 {
@@ -16,5 +18,11 @@ class Writer extends Model
         "photo"
     ];
 
-    
+    protected $with = ['books'];
+
+    public function books() : HasMany
+    {
+        return $this->hasMany(Book::class);
+    }
+
 }
